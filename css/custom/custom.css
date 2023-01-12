@@ -3105,12 +3105,6 @@ div#archive {
   border: var(--border-style);
   border-radius: 20px;
 }
-
-
-[data-theme="dark"] #page-header.nav-fixed #nav {
-  background: rgba(0, 0, 0, 0.95) !important;
-}
-
 /* 夜间模式遮罩 */
 [data-theme="dark"] #recent-posts>.recent-post-item,
 [data-theme="dark"] div#post,
@@ -8415,3 +8409,19 @@ div#author-info__sayhi {
       transform: rotate(-6deg);
     }
   }
+
+@import "//at.alicdn.com/t/c/font_3861212_9943xbhd9o8.css";
+
+/* 主页卡片阴影 */
+#aside-content .card-widget {
+  box-shadow: var(--heo-shadow-border);
+  background: var(--heo-card-bg);
+  border: var(--style-border);
+  transition: 0.3s;
+  border-radius: 12px;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+}
