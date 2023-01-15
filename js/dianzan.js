@@ -1,1 +1,108 @@
-function whenDOMReady(){dianzan()}function GetUrlRelativePath(){var e=document.location.toString().split("//"),n=e[1].indexOf("/"),t=e[1].substring(n);return-1!=t.indexOf("?")&&(t=t.split("?")[0]),t}function setCount(){var e=[],n=[],t=[];new AV.Query("dianzan").find().then((a=>{for(i=a.length-1;i>=0;i--)e.push(a[i].attributes.count),n.push(a[i].attributes.href),t.push(a[i].id);index=n.indexOf(GetUrlRelativePath()),console.log(e[index]),void 0===e[index]?document.getElementsByClassName("dianzan-count")[0].innerText="0":document.getElementsByClassName("dianzan-count")[0].innerText=e[index]+1}))}function dianzan(){try{var e=[],n=[],t=[];const a=new AV.Query("dianzan");a.find().then((s=>{for(i=s.length-1;i>=0;i--)e.push(s[i].attributes.count),n.push(s[i].attributes.href),t.push(s[i].id);if(-1==n.indexOf(GetUrlRelativePath())){console.log(1);const e=new(AV.Object.extend("dianzan"));e.set("href",GetUrlRelativePath()),e.set("count",1),e.save()}else index=n.indexOf(GetUrlRelativePath()),console.log(t[index]),a.get(t[index]).then((n=>{n.set("count",e[index]+1),n.save()}));setCount()}))}catch(e){const n=new(AV.Object.extend("dianzan"));n.set("href",GetUrlRelativePath()),n.set("count",1),n.save()}}whenDOMReady(),document.addEventListener("pjax:complete",whenDOMReady),$(document).ready((function(){const{Query:e,User:n}=AV;AV.init({appId:"46grJgMRDsM3ka2iqH8E7EpI-MdYXbMMI",appKey:"YeAULPXqWSqgSH6HlRxNbrOR",serverURL:"https://apiforktgce.nuoxnuo.eu.org"});var t=[],a=[],s=[];new AV.Query("dianzan").find().then((e=>{for(i=e.length-1;i>=0;i--)t.push(e[i].attributes.count),a.push(e[i].attributes.href),s.push(e[i].id);index=a.indexOf(GetUrlRelativePath()),console.log(t[index]),void 0===t[index]?document.getElementsByClassName("dianzan-count")[0].innerText="0":document.getElementsByClassName("dianzan-count")[0].innerText=t[index]}))}));
+function whenDOMReady() {
+    dianzan();
+}
+
+whenDOMReady() // 打开网站先执行一次
+document.addEventListener("pjax:complete", whenDOMReady) // pjax加载完成（切换页面）后再执行一次
+
+function GetUrlRelativePath() {
+    var url = document.location.toString();
+    var arrUrl = url.split("//");
+
+    var start = arrUrl[1].indexOf("/");
+    var relUrl = arrUrl[1].substring(start);
+
+    if (relUrl.indexOf("?") != -1) {
+        relUrl = relUrl.split("?")[0];
+    }
+    return relUrl;
+}
+$(document).ready(function () {
+    const {
+        Query,
+        User
+    } = AV;
+    AV.init({
+        appId: "46grJgMRDsM3ka2iqH8E7EpI-MdYXbMMI",
+        appKey: "YeAULPXqWSqgSH6HlRxNbrOR",
+        serverURL: "https://apiforktgce.nuoxnuo.eu.org"
+    });
+    var dianzans = [];
+    var hrefs = [];
+    var ids = [];
+    const query2 = new AV.Query('dianzan');
+    query2.find().then((dzs) => {
+        for (i = dzs.length - 1; i >= 0; i--) {
+            dianzans.push(dzs[i]["attributes"]["count"]);
+            hrefs.push(dzs[i]["attributes"]["href"]);
+            ids.push(dzs[i]["id"])
+        }
+        index = hrefs.indexOf(GetUrlRelativePath());
+        console.log(dianzans[index])
+        if (dianzans[index] === undefined) {
+            document.getElementsByClassName("dianzan-count")[0].innerText = "0";
+        } else {
+            document.getElementsByClassName("dianzan-count")[0].innerText = dianzans[index];
+        }
+    });
+})
+
+function setCount() {
+    var dianzans = [];
+    var hrefs = [];
+    var ids = [];
+    const query2 = new AV.Query('dianzan');
+    query2.find().then((dzs) => {
+        for (i = dzs.length - 1; i >= 0; i--) {
+            dianzans.push(dzs[i]["attributes"]["count"]);
+            hrefs.push(dzs[i]["attributes"]["href"]);
+            ids.push(dzs[i]["id"])
+        }
+        index = hrefs.indexOf(GetUrlRelativePath());
+        console.log(dianzans[index])
+        if (dianzans[index] === undefined) {
+            document.getElementsByClassName("dianzan-count")[0].innerText = "0";
+        } else {
+            document.getElementsByClassName("dianzan-count")[0].innerText = dianzans[index] + 1;
+        }
+    });
+}
+
+function dianzan() {
+    try {
+        var dianzans = [];
+        var hrefs = [];
+        var ids = [];
+        const query = new AV.Query('dianzan');
+        query.find().then((dzs) => {
+            for (i = dzs.length - 1; i >= 0; i--) {
+                dianzans.push(dzs[i]["attributes"]["count"]);
+                hrefs.push(dzs[i]["attributes"]["href"]);
+                ids.push(dzs[i]["id"])
+            }
+            if (hrefs.indexOf(GetUrlRelativePath()) == -1) {
+                console.log(1)
+                const TestObject = AV.Object.extend('dianzan');
+                const testObject = new TestObject();
+                testObject.set('href', GetUrlRelativePath());
+                testObject.set('count', 1);
+                testObject.save();
+            } else {
+                index = hrefs.indexOf(GetUrlRelativePath());
+                console.log(ids[index])
+                query.get(ids[index]).then((todo) => {
+                    todo.set('count', dianzans[index] + 1);
+                    todo.save();
+                });
+            }
+            setCount();
+        });
+    } catch (err) {
+        const TestObject = AV.Object.extend('dianzan');
+        const testObject = new TestObject();
+        testObject.set('href', GetUrlRelativePath());
+        testObject.set('count', 1);
+        testObject.save();
+    }
+
+}
