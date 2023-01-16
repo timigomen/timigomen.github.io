@@ -809,9 +809,4 @@ setBlur = function () {
         document.getElementById("settingStyle").innerText = ''
     }
 }
-//作者卡片问好
-sayhi: function() {
-    if (document.querySelector('#author-info__sayhi')) {
-        document.getElementById("author-info__sayhi").innerHTML = getTimeState() + "！我是";
-    }
-},
+
