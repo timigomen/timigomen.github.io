@@ -757,9 +757,9 @@ function whenDOMReady() {
     newYear();
     var $percent = document.querySelector("#nav #hotkey #top-button a.site-page i");
     $percent && window.addEventListener("scroll", (function () {
-    let e = document.body.scrollHeight || document.documentElement.scrollHeight,
-        t = window.innerHeight || document.documentElement.clientHeight;
-    $percent.dataset.percent = ((document.body.scrollTop || document.documentElement.scrollTop) / (e - t) * 100).toFixed(0)
+        let e = document.body.scrollHeight || document.documentElement.scrollHeight,
+            t = window.innerHeight || document.documentElement.clientHeight;
+        $percent.dataset.percent = ((document.body.scrollTop || document.documentElement.scrollTop) / (e - t) * 100).toFixed(0)
     }));
 }
 
@@ -777,43 +777,41 @@ function fullScreen() {
         de.webkitRequestFullScreen();
     }
 }
-
-// 存数据
-// name：命名 data：数据
-function saveData(name, data) {
-    localStorage.setItem(name, JSON.stringify({ 'time': Date.now(), 'data': data }))
+function hideTodayCard() {
+    document.getElementById("todayCard") && document.getElementById("todayCard").classList.add("hide")
 }
-
-// 取数据
-// name：命名 time：过期时长,单位分钟,如传入30,即加载数据时如果超出30分钟返回0,否则返回数据
-function loadData(name, time) {
-    let d = JSON.parse(localStorage.getItem(name));
-    // 过期或有错误返回 0 否则返回数据
-    if (d) {
-        let t = Date.now() - d.time
-        if (t < (time * 60 * 1000) && t > -1) return d.data;
+$(".topGroup").hover((function () { }
+), (function () {
+    document.getElementById("todayCard").classList.remove("hide"),
+        document.getElementById("todayCard").style.zIndex = 1
+}
+))
+fpssw = function () {
+    if (localStorage.getItem("fpson") == "1") {
+        localStorage.setItem("fpson", "0");
+    } else {
+        localStorage.setItem("fpson", "1");
     }
-    return 0;
+    document.location.reload();
 }
-
-// 上面两个函数如果你有其他需要存取数据的功能，也可以直接使用
-
-// 读取背景
-try {
-    let data = loadData('blogbg', 1440)
-    if (data) changeBg(data, 1)
-    else localStorage.removeItem('blogbg');
-} catch (error) { localStorage.removeItem('blogbg'); }
-
-// 切换背景函数
-// 此处的flag是为了每次读取时都重新存储一次,导致过期时间不稳定
-// 如果flag为0则存储,即设置背景. 为1则不存储,即每次加载自动读取背景.
-function changeBg(s, flag) {
-    let bg = document.getElementById('web_bg')
-    if (s.charAt(0) == '#') {
-        bg.style.backgroundColor = s
-        bg.style.backgroundImage = 'none'
-    } else bg.style.backgroundImage = s
-    if (!flag) { saveData('blogbg', s) }
+setBlur = function () {
+    blur = !blur;
+    localStorage.setItem("blur", blur);
+    if (!blur) {
+        document.getElementById("settingStyle").innerText = `
+    *{
+        -webkit-backdrop-filter: none!important;
+        backdrop-filter: none!important;
+        -webkit-filter: none!important;
+        filter: none!important;
+    }`}
+    else {
+        document.getElementById("settingStyle").innerText = ''
+    }
 }
-
+//作者卡片问好
+sayhi: function() {
+    if (document.querySelector('#author-info__sayhi')) {
+        document.getElementById("author-info__sayhi").innerHTML = getTimeState() + "！我是";
+    }
+},

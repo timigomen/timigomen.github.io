@@ -1504,7 +1504,7 @@ a:hover {
 #site-name,
 #aside-content .author-info__name,
 #aside-content .author-info__description {
-  font-family: var(--global-font);
+  font-family: HYTMR;
 }
 .is-center {
   text-align: center;
@@ -1683,7 +1683,7 @@ figure.highlight pre .javascript .function {
 #article-container pre,
 #article-container code {
   font-size: 14px;
-  font-family: Consolas_1, var(--global-font), "Microsoft YaHei", Menlo, "PingFang SC", "Microsoft JhengHei", sans-serif !important;
+  font-family: HYTMR !important;
 }
 #article-container code {
   padding: 2px 4px;
@@ -2031,7 +2031,7 @@ figure.highlight pre .javascript .function {
   height: 100%;
   vertical-align: top;
   text-align: center;
-  font-family: var(--global-font);
+  font-family: HYTMR;
 }
 @media screen and (max-width: 768px) {
   .error404 #error-wrap .error-content .error-info {
@@ -4874,11 +4874,11 @@ h1.page-title + .tag-cloud-list {
 .post-reward .reward-button .reward-main {
   position: absolute;
   bottom: 40px;
-  left: -25%;
+  left: -70%;
   z-index: 100;
   display: none;
   padding: 0 0 15px;
-  width: 150%;
+  width: 250%;
 }
 .post-reward .reward-button .reward-main .reward-all {
   display: inline-block;
