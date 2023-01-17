@@ -9625,7 +9625,6 @@ svg.icon {
 
 #menus>div.menus_items>div>a {
   letter-spacing: .2rem;
-  font-size: 1.1rem;
 }
 
 #page-header.nav-fixed #nav div.menus_items[style*="opacity: 0;"] .nav {
@@ -13893,6 +13892,9 @@ a.post-meta-original:hover {
   border-radius: 8px;
   overflow: hidden;
 }
+.content {
+  color: #000;
+}
 
 /* 文章中的超链接 */
 #article-container a {
@@ -15473,7 +15475,7 @@ a.bb-link-info:hover {
 
 /* 全局超链接 */
 a {
-  color: var(--heo-fontcolor);
+  color: #000 !important;
 }
 
 a:hover {
@@ -16849,7 +16851,7 @@ padding-left: 21px;
 }
 
 a.categoryButton i {
-font-size: 5rem;
+font-size: 7rem !important;
 opacity: 0.2;
 position: absolute;
 right: 0%;
