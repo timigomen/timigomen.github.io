@@ -1735,21 +1735,6 @@ header:not(.nav-fixed) #nav #hotkey #top-button {
   font-size: 100%
 }
 
-div#menus {
-  font-family: "ZhuZiAYuanJWD";
-}
-
-h1#site-title {
-  font-family: ZhuZiAYuanJWD;
-  font-size: 3em !important;
-}
-
-a.article-title,
-a.blog-slider__title,
-a.categoryBar-list-link,
-h1.post-title {
-  font-family: ZhuZiAYuanJWD;
-}
 
 .iconfont {
   font-family: "iconfont" !important;
