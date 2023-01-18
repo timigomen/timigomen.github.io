@@ -809,4 +809,3 @@ setBlur = function () {
         document.getElementById("settingStyle").innerText = ''
     }
 }
-
