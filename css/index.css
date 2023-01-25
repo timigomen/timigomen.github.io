@@ -1373,7 +1373,7 @@ body {
   background: var(--global-bg);
   color: var(--font-color);
   font-size: var(--global-font-size);
-  font-family: HYTMR;
+  font-family: HarmonyOS_Regular;
   line-height: 2;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-user-select: none;
@@ -1508,7 +1508,7 @@ a:hover {
 #site-name,
 #aside-content .author-info__name,
 #aside-content .author-info__description {
-  font-family: HYTMR;
+  font-family: HarmonyOS_Regular;
 }
 .is-center {
   text-align: center;
@@ -1687,7 +1687,7 @@ figure.highlight pre .javascript .function {
 #article-container pre,
 #article-container code {
   font-size: 14px;
-  font-family: HYTMR !important;
+  font-family: HarmonyOS_Regular !important;
 }
 #article-container code {
   padding: 2px 4px;
@@ -2035,7 +2035,7 @@ figure.highlight pre .javascript .function {
   height: 100%;
   vertical-align: top;
   text-align: center;
-  font-family: HYTMR;
+  font-family: HarmonyOS_Regular;
 }
 @media screen and (max-width: 768px) {
   .error404 #error-wrap .error-content .error-info {
@@ -9626,13 +9626,11 @@ header:not(.nav-fixed) #nav #hotkey #top-button {
   font-size: 90%;
   line-height: 1.7em;
   white-space: nowrap;
-  font-family: Jay
 }
 
 #nav #hotkey #top-button:hover i::before {
   content: '\f004';
   position: relative;
-  font-family: unset;
   font-size: 100%
 }
 
@@ -12647,13 +12645,6 @@ img.footer_mini_logo:hover {
 #pagination .next-post img:hover,
 .relatedPosts>.relatedPosts-list>div img:hover {
   background-color: var(--lyx-0) !important;
-}
-
-@font-face {
-  font-family: 'HYTMR';
-  font-display: swap;
-  src: url('https://npm.elemecdn.com/fontcdn-ariasaka@1.0.0/HYTangMeiRen55W.woff2') format("woff2");
-  /*/font/HYTangMeiRen55W.woff2*/
 }
 
 @media screen and (max-width: 768px) {
@@ -17687,7 +17678,62 @@ span.p.large {
   margin-left: 8px;
   transition: 0.3s;
 }
+/* 设置文字内容 :nth-child(1)的作用是选择第几个 */
+.el-input.el-input--small.el-input-group.el-input-group--prepend:nth-child(1):before {
+    content: '输入QQ号会自动获取昵称和头像🐧';
+}
 
+.el-input.el-input--small.el-input-group.el-input-group--prepend:nth-child(2):before {
+    content: '收到回复将会发送到您的邮箱📧';
+}
+
+.el-input.el-input--small.el-input-group.el-input-group--prepend:nth-child(3):before {
+    content: '可以通过昵称访问您的网站🔗';
+}
+
+/* 当用户点击输入框时显示 */
+.el-input.el-input--small.el-input-group.el-input-group--prepend:focus-within::before,
+.el-input.el-input--small.el-input-group.el-input-group--prepend:focus-within::after {
+    display: block;
+}
+
+/* 主内容区 */
+.el-input.el-input--small.el-input-group.el-input-group--prepend::before {
+    /* 先隐藏起来 */
+    display: none;
+    /* 绝对定位 */
+    position: absolute;
+    /* 向上移动60像素 */
+    top: -60px;
+    /* 文字强制不换行，防止left:50%导致的文字换行 */
+    white-space: nowrap;
+    /* 圆角 */
+    border-radius: 10px;
+    /* 距离左边50% */
+    left: 50%;
+    /* 然后再向左边挪动自身的一半，即可实现居中 */
+    transform: translate(-50%);
+    /* 填充 */
+    padding: 14px 18px;
+    background: #444;
+    color: #fff;
+}
+
+/* 小角标 */
+.el-input.el-input--small.el-input-group.el-input-group--prepend::after {
+    display: none;
+    content: '';
+    position: absolute;
+    /* 内容大小（宽高）为0且边框大小不为0的情况下，每一条边（4个边）都是一个三角形，组成一个正方形。
+    我们先将所有边框透明，再给其中的一条边添加颜色就可以实现小三角图标 */
+    border: 12px solid transparent;
+    border-top-color: #444;
+    left: 50%;
+    transform: translate(-50%, -48px);
+}
+#aside-content .aside-list > .aside-list-item .thumbnail {
+  border-radius: 20px;
+}
 div#post-comment.fixedcomment {
     position: fixed;
     top: 0;
@@ -17764,263 +17810,6 @@ div#quit-board.fixedcomment {
 
 [data-theme="dark"] div#quit-board.fixedcomment {
     background: rgba(147, 146, 128, 0.3);
-}
-/* 自定义twikoo评论输入框高度 */
-.tk-input[data-v-619b4c52] .el-textarea__inner {
-    height: 130px !important;
-}
-
-/* 输入评论时自动隐藏输入框背景图片 */
-.tk-input[data-v-619b4c52] .el-textarea__inner:focus {
-    background-image: none !important;
-}
-
-/* 调整楼中楼样式 ，整体左移，贴合气泡化效果 */
-.tk-replies {
-    left: -70px;
-    width: calc(100% + 70px);
-}
-
-/* 头像宽度调整 rem单位与全局字体大小挂钩，需配合自己情况调整大小以保证头像显示完整*/
-.tk-replies .tk-avatar {
-    width: 2.5rem !important;
-    height: 2.5rem !important;
-}
-
-.tk-replies .tk-avatar img {
-    width: 2.5rem !important;
-    height: 2.5rem !important;
-}
-
-/* 回复框左移，避免窄屏时出框 */
-.tk-comments-container .tk-submit {
-    position: relative;
-    left: -70px;
-}
-
-/* 评论块气泡化修改 */
-.tk-content {
-    background: #00a6ff;
-    /*默认模式访客气泡配色*/
-    padding: 10px;
-    color: #fff;
-    /*默认模式访客气泡字体配色*/
-    border-radius: 10px;
-    font-size: 16px !important;
-    width: fit-content;
-    max-width: 100%;
-    position: relative !important;
-    overflow: visible !important;
-    max-height: none !important;
-}
-
-/* 修复图片出框 */
-.tk-content img {
-    max-width: 100% !important;
-}
-
-/* 修复过长文本出框 */
-.tk-content pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-
-.tk-content a {
-    color: #eeecaa;
-    /*默认模式超链接配色*/
-}
-
-.tk-content::before {
-    content: '';
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: 20px;
-    left: -13px;
-    border-top: 2px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-right: 15px solid #00a6ff;
-    /*默认模式访客气泡小三角配色*/
-    border-left: 0px solid transparent;
-}
-
-.tk-master .tk-content {
-    background: #ee8585;
-    /*默认模式博主气泡配色*/
-    color: #fff;
-    /*默认模式博主气泡字体配色*/
-    width: fit-content;
-    max-width: 100%;
-}
-
-.tk-master .tk-content a {
-    color: #eeecaa;
-}
-
-.tk-master .tk-content::before {
-    content: '';
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: 20px;
-    left: -13px;
-    border-top: 2px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-right: 15px solid #ee8585;
-    /*默认模式博主气泡小三角配色*/
-    border-left: 0px solid transparent;
-}
-
-.tk-row[data-v-d82ce9a0] {
-    max-width: 100%;
-    width: fit-content;
-}
-
-.tk-avatar {
-    border-radius: 50%;
-    margin-top: 10px;
-}
-
-/* 夜间模式配色，具体比照上方默认模式class */
-[data-theme="dark"] .tk-content {
-    background: #000;
-    color: #fff;
-}
-
-[data-theme="dark"] .tk-content a {
-    color: #dfa036;
-}
-
-[data-theme="dark"] .tk-content::before {
-    border-right: 15px solid #000;
-}
-
-[data-theme="dark"] .tk-master .tk-content {
-    background: #000;
-    color: #fff;
-}
-
-[data-theme="dark"] .tk-master .tk-content a {
-    color: #dfa036;
-}
-
-[data-theme="dark"] .tk-master .tk-content::before {
-    border-top: 2px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-right: 15px solid #000;
-    border-left: 0px solid transparent;
-}
-
-/* 自适应内容 */
-@media screen and (min-width: 1024px) {
-
-    /* 设置宽度上限，避免挤压博主头像 */
-    .tk-content {
-        max-width: 75%;
-        width: fit-content;
-    }
-
-    .tk-master .tk-content {
-        width: 75%;
-    }
-
-    .tk-master .tk-content::before {
-        left: 100%;
-        border-left: 15px solid #ee8585;
-        border-right: 0px solid transparent;
-    }
-
-    .tk-master .tk-avatar {
-        position: relative;
-        left: calc(75% + 70px);
-    }
-
-    .tk-master .tk-row[data-v-d82ce9a0] {
-        position: relative;
-        top: 0px;
-        left: calc(75% - 230px);
-    }
-
-    [data-theme="dark"] .tk-master .tk-content::before {
-        border-left: 15px solid #000;
-        border-right: 0px solid transparent;
-    }
-}
-
-/* 设备名称常态隐藏，悬停评论时显示 */
-.tk-extras {
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-}
-
-.tk-content:hover+.tk-extras {
-    -webkit-animation: tk-extras-fadeIn 0.5s linear;
-    -moz-animation: tk-extras-fadeIn 0.5s linear;
-    -o-animation: tk-extras-fadeIn 0.5s linear;
-    -ms-animation: tk-extras-fadeIn 0.5s linear;
-    animation: tk-extras-fadeIn 0.5s linear;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-}
-
-@-moz-keyframes tk-extras-fadeIn {
-    from {
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-        filter: alpha(opacity=0);
-    }
-
-    to {
-        opacity: 1;
-        -ms-filter: none;
-        filter: none;
-    }
-}
-
-@-webkit-keyframes tk-extras-fadeIn {
-    from {
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-        filter: alpha(opacity=0);
-    }
-
-    to {
-        opacity: 1;
-        -ms-filter: none;
-        filter: none;
-    }
-}
-
-@-o-keyframes tk-extras-fadeIn {
-    from {
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-        filter: alpha(opacity=0);
-    }
-
-    to {
-        opacity: 1;
-        -ms-filter: none;
-        filter: none;
-    }
-}
-
-@keyframes tk-extras-fadeIn {
-    from {
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-        filter: alpha(opacity=0);
-    }
-
-    to {
-        opacity: 1;
-        -ms-filter: none;
-        filter: none;
-    }
 }
 .search-dialog {
   position: fixed;
