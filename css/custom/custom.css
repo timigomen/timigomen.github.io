@@ -1455,7 +1455,7 @@ svg.icon {
   }
 
   #nav #site-name:after {
-    background: url('https://img.pho.pub/10boke/2023/01/uso.cc-78-5sR3DDHEiE.webp') no-repeat 50% 50%;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAptJREFUeF7tm7+vDUEUxz/ff4GEBIVOpVNIFCiISOjcSDQ0GlE+WiWJSiFRUSm8ikRERUSoNAqNgkQpQac8MrLk3fvu/rhnd2b27pspb3bOOZ9PZmdmd++ITM3MzgM3gB/AA0nPc5SiHEnN7ALwZCH3TNJm6nqSC6iB/8edXEJSAS3wWSQkE9ARPrmEJAJWhE8qIboAJ3wyCVEF9IRPIiGagIHgo0uIImBg+KgSBhcQCT6ahEEFRIaPImEwAYngB5cwiIDE8INK6C0gE/xgEnoJyAw/iAS3gJHA95bgEjAy+F4SVhYwUni3hJUEjBzeJaGzgDWBX1lCJwFrBr+ShFYBawrfWUKjgDWH7yShVsBE4FslLBUwMfhGCdsETBS+VsKcgInDL5XwX8AOgd8m4a+AHQY/J0HVV9qnqT9KjiTfLAiwkRSTpYwg4C1wLEv2/EnfBwGngEfAvvz1JK3gK3Bl6ypwYkn6V0lLipfs5GJoSa/Db23PApOYHyTVchYBTaNuKitEGQHlFihzQJkE6+a6sgqUVaDBQFkGJ/KkWPYBZR9Q9gFlH5B7H/ABeAM86/jIfxQ4DpzpeH3jZbknwbuSNjwgZvYQuOzpu7VPTgGbkmZ9AMzsTnW2yB0mp4AjksLwdzczOwx8dAcIr70yLoO7JP3sU3zoa2ZfgIPeONkENCVeBcbMwsvZZS9tO4UpAnLdAmUENJjvNHari8otkHEOCMdbwzFXT/suaY+n42IfMws7yHPOWC8knfVuha+Gg83OxPclXXP2netmZreBm85YlyQ9dgmo1uCXwGlH8t2Swsnw3s3MDgDfHIFad6Ktf5SsJNwCLgKHWor4BbwDNiR9chRc28XM9gP3qk/5exti/wY+h4cvSdfbavgDTDRpnlU9TNAAAAAASUVORK5CYII=') no-repeat 50% 50%;
     opacity: 0;
     position: absolute;
     display: flex;
@@ -6382,15 +6382,6 @@ blockquote p {
 #sidebar {
   background: var(--heo-maskbg);
 }
-
-/* 文章图片 */
-#article-container img {
-  border-radius: 12px;
-  margin-bottom: 0.5rem;
-  object-fit: cover;
-}
-
-
 /* 文章视频 */
 .doge-inner-player {
   border-radius: 12px !important;
@@ -8050,10 +8041,6 @@ div#banners {
   transition: .3s
 }
 
-#aside-content>.card-info {
-  background: #fff url(https://img.pho.pub/10boke/2023/01/uso.cc-78-tE1SHiXEaI.webp) top -24% center no-repeat;
-  position: relative
-}
 
 [data-theme=dark] #aside-content>.card-info {
   background: var(--anzhiyu-card-bg)
