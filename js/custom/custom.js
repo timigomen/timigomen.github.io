@@ -914,3 +914,114 @@ function owoBig() {
     })
     observer.observe(document.getElementById('post-comment'), { subtree: true, childList: true }) // 监听的 元素 和 配置项
 }
+let icons = document.querySelectorAll(".ico");
+let length = icons.length;
+
+icons.forEach((item, index) => {
+  item.addEventListener("mouseover", (e) => {
+    focus(e.target, index);
+  });
+  item.addEventListener("mouseleave", (e) => {
+    icons.forEach((item) => {
+      item.style.transform = "scale(1)  translateY(0px)";
+    });
+  });
+});
+
+const focus = (elem, index) => {
+  let previous = index - 1;
+  let previous1 = index - 2;
+  let next = index + 1;
+  let next2 = index + 2;
+
+  if (previous == -1) {
+    console.log("first element");
+    elem.style.transform = "scale(1.5)  translateY(-10px)";
+  } else if (next == icons.length) {
+    elem.style.transform = "scale(1.5)  translateY(-10px)";
+    console.log("last element");
+  } else {
+    elem.style.transform = "scale(1.5)  translateY(-10px)";
+    icons[previous].style.transform = "scale(1.2) translateY(-6px)";
+    icons[previous1].style.transform = "scale(1.1)";
+    icons[next].style.transform = "scale(1.2) translateY(-6px)";
+    icons[next2].style.transform = "scale(1.1)";
+  }
+};
+var custom = {
+    saveData: (e,t)=>{
+        localStorage.setItem(e, JSON.stringify({
+            time: Date.now(),
+            data: t
+        }))
+    },
+    loadData: (e,t)=>{
+        let n = JSON.parse(localStorage.getItem(e));
+        if (n) {
+            let e = Date.now() - n.time;
+            if (e < 60 * t * 1e3 && e > -1)
+                return n.data
+        }
+        return 0
+    },
+    randomLink: ()=>{
+        let e = shine.loadData("links", 30);
+        if (e) {
+            let t = document.querySelectorAll("#friend-links-in-footer .footer-item");
+            if (!t.length)
+                return;
+            for (let n = 0; n < 5; n++) {
+                let o = parseInt(Math.random() * e.length);
+                t[n].innerText = e[o].name,
+                t[n].href = e[o].link,
+                e.splice(o, 1)
+            }
+        } else{
+            fetch("./link.json").then((e=>e.json())).then((e=>{
+                shine.saveData("links", e.link_list),
+                shine.randomLink()
+            }
+            ))
+        }
+    },
+}
+custom.randomLink();
+window.addEventListener("DOMContentLoaded",() => {
+	const ur = new UndoRedo(".undo-redo");
+});
+
+class UndoRedo {
+	actionIndex = 4;
+	actions = 9;
+
+	constructor(el) {
+		this.el = document.querySelector(el);
+
+		this.init();
+	}
+	init() {
+		this.el?.addEventListener("click",this.buttonAction.bind(this));
+		this.updateDisplay();
+	}
+	buttonAction(e) {
+		const actionName = e.target.getAttribute("data-action");
+
+		if (actionName === "icon-moon" && this.actionIndex > 0) {
+			// undo
+			--this.actionIndex;
+		} else if (actionName === "icon-moon" && this.actionIndex < this.actions - 1) {
+			// redo
+			++this.actionIndex;
+		}
+
+		this.updateDisplay();
+	}
+	updateDisplay() {
+		// disable undo if on the first action
+		const undoButton = this.el?.querySelector("[data-action='icon-moon']");
+		undoButton.disabled = this.actionIndex === 0;
+		// disable redo if on the last action
+		const redoButton = this.el?.querySelector("[data-action='icon-moon']");
+		redoButton.disabled = this.actionIndex === this.actions - 1;
+	}
+}
